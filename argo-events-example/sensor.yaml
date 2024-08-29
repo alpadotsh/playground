@@ -22,9 +22,9 @@ spec:
                 name: "nginx"
               spec:
                 containers:
-                  - name: nginx
+                  - name: hello-container
+                    args:
+                      - "hello-world"
+                    command:
+                      - cowsay
                     image: "nginx"
-          parameters:
-            - src:
-                dependencyName: test-dep
-              dest: spec.containers.0.args.0
