@@ -1,0 +1,47 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: prometheus-community
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  url: https://prometheus-community.github.io/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: flux-system
+spec:
+  interval: 10m
+  timeout: 5m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: '61.6.1'
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+      interval: 5m
+  releaseName: kube-prometheus-stack
+  targetNamespace: monitoring
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  test:
+    enable: true
+  values:
+    grafana:
+      replicas: 1
+      adminPassword: cc21ed1b03801d0e7f0942e28643ae5d67239126
+    prometheus:
+      prometheusSpec:
+        podMetadata:
+          labels:
+            'app.kubernetes.io/name': prometheus
+        
