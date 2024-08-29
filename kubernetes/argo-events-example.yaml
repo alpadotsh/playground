@@ -11,7 +11,7 @@ spec:
     path: argo-events-example
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: argo-events
   syncPolicy:
     automated:
       prune: true
