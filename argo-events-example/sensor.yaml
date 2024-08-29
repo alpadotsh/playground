@@ -23,8 +23,4 @@ spec:
               spec:
                 containers:
                   - name: hello-container
-                    args:
-                      - "hello-world"
-                    command:
-                      - cowsay
                     image: "nginx"
