@@ -1,0 +1,32 @@
+# ServiceAccount
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: create-pod-sa
+  namespace: argo-events
+
+---
+# ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: create-pod-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create"]
+
+---
+# ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: create-pod-rolebinding
+subjects:
+  - kind: ServiceAccount
+    name: create-pod-sa
+    namespace: argo-events
+roleRef:
+  kind: ClusterRole
+  name: create-pod-role
+  apiGroup: rbac.authorization.k8s.io
