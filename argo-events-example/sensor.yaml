@@ -19,7 +19,7 @@ spec:
               apiVersion: v1
               kind: Pod
               metadata:
-                generateName: hello-world-
+                name: "{{workflow.name}}"
               spec:
                 containers:
                   - name: hello-container
@@ -27,7 +27,7 @@ spec:
                       - "hello-world"
                     command:
                       - cowsay
-                    image: "docker/whalesay:latest"
+                    image: "nginx"
           parameters:
             - src:
                 dependencyName: test-dep
