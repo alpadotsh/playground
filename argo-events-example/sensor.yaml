@@ -22,11 +22,7 @@ spec:
                 name: "nginx"
               spec:
                 containers:
-                  - name: hello-container
-                    args:
-                      - "hello-world"
-                    command:
-                      - cowsay
+                  - name: nginx
                     image: "nginx"
           parameters:
             - src:
