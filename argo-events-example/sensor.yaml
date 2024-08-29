@@ -13,7 +13,7 @@ spec:
     - template:
         name: webhook-pod-trigger
         k8s:
-          operation: create
+          operation: update
           source:
             resource:
               apiVersion: v1
