@@ -1,0 +1,32 @@
+server:
+  # Enable Ingress for ArgoCD server
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hostname: argocd.127-0-0-1.sslip.io
+    # Set the hostname for the Ingress (use localhost or a custom name for local testing)
+    # Annotations for the Ingress (customize based on your ingress controller requirements)
+    annotations:
+      kubernetes.io/ingress.class: "nginx" # Ensure this matches your local ingress setup
+    # No TLS configuration needed; it will run without HTTPS
+  
+  # Disable TLS on the ArgoCD server itself
+  extraArgs:
+    - --insecure
+  # Set service port to HTTP
+  service:
+    type: ClusterIP
+    port: 80
+
+# Configure Redis, Dex, and other components if needed
+redis:
+  enabled: true
+
+dex:
+  enabled: false
+
+controller:
+  enabled: true
+
+repoServer:
+  enabled: true
