@@ -1,3 +1,4 @@
 .idea
 /deploy/terraform/local/terraform.tfstate
 /deploy/terraform/local/terraform.tfstate.backup
+/deploy/terraform/local/.terraform/
