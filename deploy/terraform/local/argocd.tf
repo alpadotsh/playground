@@ -1,13 +1,3 @@
-provider "kubernetes" {
-  config_path = "~/.kube/config"
-}
-
-provider "helm" {
-  kubernetes {
-    config_path = "~/.kube/config"
-  }
-}
-
 resource "helm_release" "argocd" {
   chart      = "argo-cd"
   repository = "https://argoproj.github.io/argo-helm"
@@ -38,5 +28,4 @@ output "argocd-initial-admin-password" {
   sensitive = true
   value     = data.kubernetes_secret.argocd-initial-admin-secret.data.password
 }
-
 
