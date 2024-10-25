@@ -1,7 +1,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-  name: pmon
+  name: crossplane
   namespace: crossplane-system
   labels:
     release: kube-prometheus-stack
