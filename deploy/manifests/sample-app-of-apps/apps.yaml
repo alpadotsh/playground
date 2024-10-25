@@ -20,7 +20,7 @@ spec:
             name: nginx-deployment
           patch: |-
             - op: replace
-              path: /spec/template/spec/containers[0].image
+              path: /spec/template/spec/containers/0/image
               value: nginx:1.26.2
   destination:
     server: https://kubernetes.default.svc
@@ -55,7 +55,7 @@ spec:
             name: nginx-deployment
           patch: |-
             - op: replace
-              path: /spec/template/spec/containers[0].image
+              path: /spec/template/spec/containers/0/image
               value: nginx:1.26.2
   destination:
     server: https://kubernetes.default.svc
@@ -90,7 +90,7 @@ spec:
             name: nginx-deployment
           patch: |-
             - op: replace
-              path: /spec/template/spec/containers[0].image
+              path: /spec/template/spec/containers/0/image
               value: nginx:1.26.2
   destination:
     server: https://kubernetes.default.svc
