@@ -29,3 +29,5 @@ output "argocd-initial-admin-password" {
   value     = data.kubernetes_secret.argocd-initial-admin-secret.data.password
 }
 
+
+resource "kubernetes" "" {}
