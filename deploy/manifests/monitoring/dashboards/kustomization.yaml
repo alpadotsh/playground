@@ -1,0 +1,8 @@
+nameSuffix: -dashboard
+namespace: monitoring
+commonLabels:
+  grafana_dashboard: "1"
+configMapGenerator:
+  - name: crossplane
+    files:
+      - crossplane_21169_rev1.json
