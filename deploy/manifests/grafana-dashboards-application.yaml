@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    path: deploy/manifests/monitoring/grafana-dashboards
+    path: deploy/manifests/grafana-dashboards
     repoURL: https://github.com/alpadotsh/playground.git
     targetRevision: main
   destination:
