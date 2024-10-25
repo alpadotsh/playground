@@ -14,6 +14,14 @@ spec:
     repoURL: https://github.com/alpadotsh/playground.git
     kustomize:
       namePrefix: sample-app-0-
+      patches:
+        - target:
+            kind: Deployment
+            name: nginx-deployment
+          patch: |-
+            - op: replace
+              path: /spec/template/spec/containers[0].image
+              value: nginx:1.27.2
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
@@ -41,6 +49,14 @@ spec:
     repoURL: https://github.com/alpadotsh/playground.git
     kustomize:
       namePrefix: sample-app-1-
+      patches:
+        - target:
+            kind: Deployment
+            name: nginx-deployment
+          patch: |-
+            - op: replace
+              path: /spec/template/spec/containers[0].image
+              value: nginx:1.27.2
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
@@ -68,6 +84,14 @@ spec:
     repoURL: https://github.com/alpadotsh/playground.git
     kustomize:
       namePrefix: sample-app-2-
+      patches:
+        - target:
+            kind: Deployment
+            name: nginx-deployment
+          patch: |-
+            - op: replace
+              path: /spec/template/spec/containers[0].image
+              value: nginx:1.27.2
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
