@@ -8,6 +8,8 @@ metadata:
 spec:
   project: default
   sources:
+    - path: deploy/manifests
+      repoURL: https://github.com/alpadotsh/playground.git
     - path: deploy/manifests/operators
       repoURL: https://github.com/alpadotsh/playground.git
       targetRevision: main
