@@ -51,7 +51,7 @@ configs:
           if obj.status ~= nil then
             if obj.status.operationState ~= nil and obj.status.operationState.phase == "Running" then
               hs.status = "Progressing"
-              hs.message = obj.status.operationState.phase
+              hs.message = obj.status.operationState.message
             elseif obj.status.health ~= nil then
               hs.status = obj.status.health.status
               if obj.status.health.message ~= nil then
