@@ -3,7 +3,7 @@ kind: Application
 metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  name: grafana-dashboards
+  name: sample-app-of-apps
   namespace: argocd
 spec:
   project: default
