@@ -12,6 +12,8 @@ spec:
   source:
     path: deploy/manifests/sample-app-of-apps/sample-app-with-hook
     repoURL: https://github.com/alpadotsh/playground.git
+    kustomize:
+      namePrefix: sample-app-0-
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
@@ -37,6 +39,8 @@ spec:
   source:
     path: deploy/manifests/sample-app-of-apps/sample-app-with-hook
     repoURL: https://github.com/alpadotsh/playground.git
+    kustomize:
+      namePrefix: sample-app-1-
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
