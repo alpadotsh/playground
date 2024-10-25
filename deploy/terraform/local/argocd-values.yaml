@@ -30,3 +30,33 @@ controller:
 
 repoServer:
   enabled: true
+  
+configs:
+  cm:
+    create: true
+    annotations: { }
+    application.instanceLabelKey: argocd.argoproj.io/instance
+    server.rbac.log.enforce.enable: false
+    exec.enabled: false
+    admin.enabled: true
+    timeout.reconciliation: 180s
+    timeout.hard.reconciliation: 0s
+    statusbadge.enabled: false
+    resource.customizations: |
+      argoproj.io/Application:
+        health.lua: |
+          hs = {}
+          hs.status = "Progressing"
+          hs.message = "Progressing......"
+          if obj.status ~= nil then
+            if obj.status.operationState ~= nil and obj.status.operationState.phase == "Running" then
+              hs.status = "Progressing"
+              hs.message = "Application sync is in progress"
+            elseif obj.status.health ~= nil then
+              hs.status = obj.status.health.status
+              if obj.status.health.message ~= nil then
+                hs.message = obj.status.health.message
+              end
+            end
+          end
+          return hs

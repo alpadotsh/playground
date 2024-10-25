@@ -28,6 +28,3 @@ output "argocd-initial-admin-password" {
   sensitive = true
   value     = data.kubernetes_secret.argocd-initial-admin-secret.data.password
 }
-
-
-resource "kubernetes" "" {}
