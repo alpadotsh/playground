@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: crossplane
+  namespace: crossplane-system
+spec:
+  selector:
+    matchLabels:
+      app: crossplane
+  endpoints:
+    - port: metrics
+      interval: 30s
