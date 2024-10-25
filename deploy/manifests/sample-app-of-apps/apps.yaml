@@ -7,7 +7,6 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "0"
-    argocd.argoproj.io/sync-options: Force=true,Replace=true
 spec:
   project: default
   source:
@@ -35,7 +34,6 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
-    argocd.argoproj.io/sync-options: Force=true,Replace=true
 spec:
   project: default
   source:
@@ -63,7 +61,6 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
-    argocd.argoproj.io/sync-options: Force=true,Replace=true
 spec:
   project: default
   source:
