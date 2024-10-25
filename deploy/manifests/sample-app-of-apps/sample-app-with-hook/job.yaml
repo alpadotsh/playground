@@ -1,11 +1,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: example-job-
+  name: presync-job
   namespace: default
   annotations:
     argocd.argoproj.io/hook: PreSync
 spec:
+  ttlSecondsAfterFinished: 30
   template:
     spec:
       containers:
