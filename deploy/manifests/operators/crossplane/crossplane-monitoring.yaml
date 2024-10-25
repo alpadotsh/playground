@@ -1,7 +1,7 @@
 apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
+kind: PodMonitor
 metadata:
-  name: crossplane
+  name: pmon
   namespace: crossplane-system
   labels:
     release: kube-prometheus-stack
@@ -9,6 +9,6 @@ spec:
   selector:
     matchLabels:
       app: crossplane
-  endpoints:
+  podMetricsEndpoints:
     - port: metrics
       interval: 30s
