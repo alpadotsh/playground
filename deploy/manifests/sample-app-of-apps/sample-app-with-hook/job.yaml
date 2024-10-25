@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: example-job-
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  template:
+    spec:
+      containers:
+        - name: example
+          image: busybox
+          command: ["sh", "-c", "sleep 5"]
+      restartPolicy: Never
