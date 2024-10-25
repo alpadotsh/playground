@@ -11,6 +11,10 @@ spec:
     repoURL: https://charts.crossplane.io/master/
     chart: crossplane
     targetRevision: 1.18.0-rc.0.103.g79c3d347
+    helm:
+      valuesObject:
+        metrics:
+          enabled: true
   destination:
     server: https://kubernetes.default.svc
     namespace: crossplane-system
