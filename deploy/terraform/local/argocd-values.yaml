@@ -47,7 +47,7 @@ configs:
         health.lua: |
           hs = {}
           hs.status = "Progressing"
-          hs.message = "Progressing......"
+          hs.message = "Progressing..."
           if obj.status ~= nil then
             if obj.status.operationState ~= nil and obj.status.operationState.phase == "Running" then
               hs.status = "Progressing"
