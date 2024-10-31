@@ -23,14 +23,14 @@ spec:
           namespaces: ""  # Set if needed
           clusterResources: "true"  # Modify based on your need
           project: "default"
-          config: |
-            {
-              "tlsClientConfig": {
-                "caData": "{{request.object.data.certificate-authority}}",
-                "certData": "{{request.object.data.client-certificate}}",
-                "keyData": "{{request.object.data.client-key}}",
-                "serverName": ""
-              },
-              "disableCompression": false
-            }
+#          config: |
+#            {
+#              "tlsClientConfig": {
+#                "caData": "{{ request.object.data.certificate-authority }}",
+#                "certData": "{{ request.object.data.client-certificate }}",
+#                "keyData": "{{ request.object.data.client-key }}",
+#                "serverName": ""
+#              },
+#              "disableCompression": false
+#            }
         synchronize: true
