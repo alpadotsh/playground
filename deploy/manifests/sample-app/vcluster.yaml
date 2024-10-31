@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vcluster-platform
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://charts.loft.sh/
+    chart: vcluster-platform
+    targetRevision: '' # Set this to a specific version or leave empty to deploy the latest version
+  destination:
+    name: in-cluster
+    namespace: vcluster-platform
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
