@@ -29,11 +29,4 @@ spec:
             namespaces: "" # Optional, specify if needed
             clusterResources: "false" # Optional, set as needed
             project: "" # Optional, set as needed
-            config: |
-              {
-                "tlsClientConfig": {
-                  "caData": "{{ request.object.data['certificate-authority'] | base64decode }}",
-                  "certData": "{{ request.object.data['client-certificate'] | base64decode }}",
-                  "keyData": "{{ request.object.data['client-key'] | base64decode }}"
-                }
-              }
+            
