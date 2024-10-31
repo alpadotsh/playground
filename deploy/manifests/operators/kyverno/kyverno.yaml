@@ -17,3 +17,6 @@ spec:
       prune: true
     syncOptions:
       - CreateNamespace=true
+      - Validate=true
+      - ServerSideApply=true
+      - ApplyOutOfSyncOnly=true
