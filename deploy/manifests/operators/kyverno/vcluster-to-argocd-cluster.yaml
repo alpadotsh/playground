@@ -1,34 +1,36 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: vcluster-to-argocd-cluster
+  name: create-argocd-cluster-secret
 spec:
   rules:
-    - name: vcluster-to-argocd-cluster
+    - name: create-argocd-cluster-secret
       match:
         resources:
           kinds:
             - Secret
-          namespaceSelector:
-            matchLabels:
-              app.kubernetes.io/part-of: vcluster
-          name: vc-vcluster-platform
+          namespaces:
+            - '*'
+          names:
+            - vc-vcluster-platform
       generate:
-        apiVersion: v1
-        kind: ConfigMap
-        name: "{{ request.object.metadata.namespace }}-vcluster-platform"
+        kind: Secret
+        name: argocd-cluster-secret
         namespace: argocd
-        synchronize: true
         data:
-          metadata:
-            annotations:
-              generated-by: "kyverno"
-            labels:
-              argocd.argoproj.io/secret-type: cluster
-          stringData:
-            name: "{{ request.object.metadata.namespace }}"
-            server: "vcluster-platform.vcluster-platform.svc.cluster.local"
-            namespaces: "" # Optional, specify if needed
-            clusterResources: "false" # Optional, set as needed
-            project: "" # Optional, set as needed
-            
+          name: "vcluster-platform"
+          server: "https://kubernetes.default.svc"
+          namespaces: ""  # Set if needed
+          clusterResources: "true"  # Modify based on your need
+          project: "default"
+          config: |
+            {
+              "tlsClientConfig": {
+                "caData": "{{request.object.data.certificate-authority}}",
+                "certData": "{{request.object.data.client-certificate}}",
+                "keyData": "{{request.object.data.client-key}}",
+                "serverName": ""
+              },
+              "disableCompression": false
+            }
+        synchronize: true
