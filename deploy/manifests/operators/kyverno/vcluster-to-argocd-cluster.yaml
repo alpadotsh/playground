@@ -10,7 +10,8 @@ spec:
           kinds:
             - Secret
           namespaceSelector:
-            app.kubernetes.io/part-of: vcluster
+            matchLabels:
+              app.kubernetes.io/part-of: vcluster
           name: vc-vcluster-platform
       generate:
         apiVersion: v1
