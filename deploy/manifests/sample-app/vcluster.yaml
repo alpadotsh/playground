@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://charts.loft.sh/
-    chart: vcluster-platform
+    chart: vcluster
     targetRevision: '0.20.3' # Set this to a specific version or leave empty to deploy the latest version
   destination:
     name: in-cluster
