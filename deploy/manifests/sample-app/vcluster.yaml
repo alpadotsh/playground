@@ -13,6 +13,9 @@ spec:
     name: in-cluster
     namespace: vcluster-platform
   syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        app.kubernetes.io/part-of: vcluster
     automated:
       prune: true
     syncOptions:
