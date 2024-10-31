@@ -1,0 +1,39 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: vcluster-to-argocd-cluster
+spec:
+  rules:
+    - name: vcluster-to-argocd-cluster
+      match:
+        resources:
+          kinds:
+            - Secret
+          namespaceSelector:
+            app.kubernetes.io/part-of: vcluster
+          name: vc-vcluster-platform
+      generate:
+        kind: Secret
+        name: "{{ request.object.metadata.namespace }}-vcluster-platform"
+        namespace: argocd
+        synchronize: true
+        data:
+          metadata:
+            annotations:
+              generated-by: "kyverno"
+            labels:
+              argocd.argoproj.io/secret-type: cluster
+          stringData:
+            name: "{{ request.object.metadata.namespace }}"
+            server: "vcluster-platform.vcluster-platform.svc.cluster.local"
+            namespaces: "" # Optional, specify if needed
+            clusterResources: "false" # Optional, set as needed
+            project: "" # Optional, set as needed
+            config: |
+              {
+                "tlsClientConfig": {
+                  "caData": "{{ request.object.data['certificate-authority'] }}",
+                  "certData": "{{ request.object.data['client-certificate'] }}",
+                  "keyData": "{{ request.object.data['client-key'] }}"
+                }
+              }
