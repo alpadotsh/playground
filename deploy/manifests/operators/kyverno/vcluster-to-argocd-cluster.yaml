@@ -32,8 +32,8 @@ spec:
             config: |
               {
                 "tlsClientConfig": {
-                  "caData": "{{ request.object.data['certificate-authority'] }}",
-                  "certData": "{{ request.object.data['client-certificate'] }}",
-                  "keyData": "{{ request.object.data['client-key'] }}"
+                  "caData": "{{ request.object.data['certificate-authority'] | base64decode }}",
+                  "certData": "{{ request.object.data['client-certificate'] | base64decode }}",
+                  "keyData": "{{ request.object.data['client-key'] | base64decode }}"
                 }
               }
