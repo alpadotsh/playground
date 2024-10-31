@@ -14,7 +14,7 @@ spec:
           name: vc-vcluster-platform
       generate:
         apiVersion: v1
-        kind: Secret
+        kind: ConfigMap
         name: "{{ request.object.metadata.namespace }}-vcluster-platform"
         namespace: argocd
         synchronize: true
