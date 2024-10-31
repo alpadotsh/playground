@@ -13,6 +13,7 @@ spec:
             app.kubernetes.io/part-of: vcluster
           name: vc-vcluster-platform
       generate:
+        apiVersion: v1
         kind: Secret
         name: "{{ request.object.metadata.namespace }}-vcluster-platform"
         namespace: argocd
