@@ -14,6 +14,7 @@ spec:
           names:
             - vc-vcluster-platform
       generate:
+        apiVersion: v1
         kind: Secret
         name: argocd-cluster-secret
         namespace: argocd
